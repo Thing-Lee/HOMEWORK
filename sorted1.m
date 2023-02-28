@@ -1,13 +1,13 @@
-function y = sorted1( m , n )
-a = rand( m , n ) ;
-ma = -inf ; w1 = [ ] ;
-for i = 1 : m
-    for j = 1 : n
-        if a( i , j ) >= ma
-            ma = a( i , j ) ;
-            w = [ i , j ] ;
-            w1 = [ w1 ; w ] ;   %当有相同元素出现多个坐标的常见处理方法
+function y = sorted1( x )
+a = randperm( x );
+n = length( a ) ;
+for i = 1 : n - 1
+    for j = n : -1 : i + 1      %起泡法从后往前排序
+        if a( j ) < a( j - 1 )
+            b = a( j - 1 ) ;
+            a( j - 1 ) = a( j ) ;
+            a( j ) = b ;
         end
+        y = a
     end
 end
-y = ma ;
